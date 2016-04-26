@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CP Article Reader Chrome Extension</title>
+</head>
+
+<body>
+
+    <div class="container" id="loading-container" style="display:none;">
+        <h3 class="text-center">Loading Article...</h3>     
+    </div>
+    <!-- loading-container -->
+    
+    <div class="container" id="article-container" style="display:none;">
+
+        <div class="jumbotron">
+            <div class="container">
+                <h2><span id="article-title">CodeProject Reader Chrome Extension</span><small></small></h2>
+                <p class="lead" <span id="article-summary">
+                    </span>
+                </p>
+                <div class="lead small">
+                    <span id="article-author">Vince Chan</span>, <span id="article-date">date</span>
+                </div>
+                <div class="lead small">
+                    <span id="article-rating"></span> (<span id="article-count"></span> votes)
+                </div>
+            </div>
+        </div>
+
+        <div id="article-body"></div>
+    </div>
+    <!-- article-container -->
+
+    <div id="articledata" style="height: 0; width: 0; display: none;">
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/prism.js"></script>
+    <script src="js/render.js"></script>
+
+</body>
+
+</html>
