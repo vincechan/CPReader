@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
   "name": "CodeProject Article Reader",
-  "description": "Render CodeProjects article in customizable themes.",
-  "version": "1.0",
+  "short_name": "CPReader",
+  "description": "Make codeproject articles more readable.",
+  "version": "1.0.1",
   "background": {
-    "scripts": ["js/background.js"],
-    "persistent": false
+    "scripts": ["js/background.js"]
   },
   "icons" : {
     "16" : "img/icon16.png",
@@ -15,11 +15,12 @@
   "page_action" :
   {
     "default_icon": "img/icon48.png",
-    "default_title" : "Display in Article Reader"
+    "default_title": "Read Article in Reader",
+    "default_popup": "popup.html"
   },  
   "permissions" : [
     "declarativeContent",
-    "tabs",
+    "activeTab",
     "http://*.codeproject.com/"
   ]  
 }

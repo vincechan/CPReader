@@ -1,3 +1,195 @@
+/**
+ * define available bootswatch themes.
+ */
+var bootswatchThemes =
+{
+  "version": "3.3.6",
+  "themes": [
+    {
+      "name": "Cerulean",
+      "description": "A calm blue sky",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css"
+    },
+    {
+      "name": "Cosmo",
+      "description": "An ode to Metro",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/cosmo/bootstrap.min.css"
+    },
+    {
+      "name": "Cyborg",
+      "description": "Jet black and electric blue",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/cyborg/bootstrap.min.css"
+    },
+    {
+      "name": "Darkly",
+      "description": "Flatly in night mode",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/darkly/bootstrap.min.css"
+    },
+    {
+      "name": "Flatly",
+      "description": "Flat and modern",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/flatly/bootstrap.min.css"
+    },
+    {
+      "name": "Journal",
+      "description": "Crisp like a new sheet of paper",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/journal/bootstrap.min.css"
+    },
+    {
+      "name": "Lumen",
+      "description": "Light and shadow",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/lumen/bootstrap.min.css"
+    },
+    {
+      "name": "Paper",
+      "description": "Material is the metaphor",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/paper/bootstrap.min.css"
+    },
+    {
+      "name": "Readable",
+      "description": "Optimized for legibility",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/readable/bootstrap.min.css"
+    },
+    {
+      "name": "Sandstone",
+      "description": "A touch of warmth",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/sandstone/bootstrap.min.css"
+    },
+    {
+      "name": "Simplex",
+      "description": "Mini and minimalist",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/simplex/bootstrap.min.css"
+    },
+    {
+      "name": "Slate",
+      "description": "Shades of gunmetal gray",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/slate/bootstrap.min.css"
+    },
+    {
+      "name": "Spacelab",
+      "description": "Silvery and sleek",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/spacelab/bootstrap.min.css"
+    },
+    {
+      "name": "Superhero",
+      "description": "The brave and the blue",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/superhero/bootstrap.min.css"
+    },
+    {
+      "name": "United",
+      "description": "Ubuntu orange and unique font",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/united/bootstrap.min.css"
+    },
+    {
+      "name": "Yeti",
+      "description": "A friendly foundation",
+      "cssCdn": "https://maxcdn.bootstrapcdn.com/bootswatch/latest/yeti/bootstrap.min.css"
+    }
+  ]
+}
+
+/**
+ * define available prism themes
+ */
+var prismThemes = 
+{
+    "themes" : [
+        {
+            "name" : "Default",
+            "cssCdn" : "https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism.min.css"
+        },
+        {
+            "name" : "Coy",
+            "cssCdn" : "https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-coy.min.css"
+        },
+        {
+            "name" : "Dark",
+            "cssCdn" : "https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-dark.min.css"
+        },
+        {           
+            "name" : "Funky",
+            "cssCdn" : "https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-funky.min.css"
+        },
+        {           
+            "name" : "Okaidia",
+            "cssCdn" : "https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-okaidia.min.css"
+        },
+        {           
+            "name" : "Solarizedlight",
+            "cssCdn" : "https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-solarizedlight.min.css"
+        },
+        {           
+            "name" : "Tomorrow",
+            "cssCdn" : "https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-tomorrow.min.css"
+        },
+        {           
+            "name" : "Twilight",
+            "cssCdn" : "https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-twilight.min.css"
+        }                                
+    ]
+};
+
+/**
+ * shared variables
+ */
+var articleUrl = undefined
+
+/**
+ * get user's preferred bootswatch theme.
+ */
+function getUserBootswatchTheme() {
+  var themeName = getUserBootswatchThemeName();
+  for (var i = 0; i < bootswatchThemes.themes.length; i++) {
+      if (bootswatchThemes.themes[i].name == themeName) {
+        return bootswatchThemes.themes[i];
+      }
+  }
+  console.log("no user bootswatch theme is found");
+}
+
+/**
+ * get the name of user's preferred bootswatch theme.
+ */
+function getUserBootswatchThemeName() {
+  var name = localStorage["UserBootstrapThemeName"];
+  if (name == undefined) {
+    name = "Readable";
+  }
+  return name;  
+}
+
+/**
+ * get user's preferred prism theme
+ */
+function getUserPrismThemeName() {
+  var name = localStorage["UserPrismThemeName"];
+  if (name == undefined) {
+    name = "Okaidia";
+  }
+  return name;  
+}
+
+/**
+ * get the name of user's preferred prism theme.
+ */
+function getUserPrismTheme() {
+  var themeName = getUserPrismThemeName();
+  for (var i = 0; i < prismThemes.themes.length; i++) {
+      if (prismThemes.themes[i].name == themeName) {
+        return prismThemes.themes[i];
+      }
+  }
+  console.log("no user prism theme is found");
+}
+
+/**
+ * save user's preferred themes to local storage.
+ */
+function saveUserThemes(bootswatchThemeName, prismThemeName) {
+  localStorage["UserBootstrapThemeName"] = bootswatchThemeName;
+  localStorage["UserPrismThemeName"] = prismThemeName;  
+}
+
 // When the extension is installed or upgraded ...
 chrome.runtime.onInstalled.addListener(function () {
   // Replace all rules ...
@@ -8,7 +200,7 @@ chrome.runtime.onInstalled.addListener(function () {
         // That fires when a page's URL matches a codeproject article or tips url
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlMatches: 'codeproject.com/[Articles|Tips]' },
+             pageUrl: { urlMatches: 'codeproject.com/(Articles|Tips)' },
           })
         ],
         // And shows the extension's page action.
@@ -18,14 +210,4 @@ chrome.runtime.onInstalled.addListener(function () {
   });
 });
 
-// Called when the user clicks on the page action
-chrome.pageAction.onClicked.addListener(function (tab) {
-  // store the article url in contentUrl variable. The content in that url will be rendered in render.html.
-  contentUrl = tab.url;
 
-  // show the article page in a new tab
-  chrome.tabs.create({ url: "render.html" });
-});
-
-// Store the url of the code project article whe page action is clicked on
-var contentUrl = "";
