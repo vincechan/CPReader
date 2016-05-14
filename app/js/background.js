@@ -137,7 +137,7 @@ layouts =
   },
   {
     "name" : "md",
-    "description" : "Fixed - Medimum"
+    "description" : "Fixed - Medium"
   },
   {
     "name" : "lg",
