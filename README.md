@@ -6,7 +6,8 @@ You can install the CodeProject Aritle Reader chrome extension from the [Chrome 
 
 ## Using the Extension
 Once the extension is installed, you will see the extension's icon ![icon](https://raw.github.com/vincechan/CPReader/master/app/img/icon16.png) showing on the right of the address bar. Since this extension is only applicable for codeproject.com articles, it will normally be disabled. It will become enabled when you visit a codeproject article/tips page. On any codeproject article/tips page, click on extension's icon. The following popup will show.
-<img src="https://raw.github.com/vincechan/CPReader/master/screenshots/popup.png" alt="Popup" width="384" height="273">
+
+<img src="https://raw.github.com/vincechan/CPReader/master/screenshots/popup.png" alt="Popup" width="369" height="326">
 
 My personal favorite is the Readable bootswatch theme togther with the Okaidia prism theme. This is what it looks like:
 <img src="https://raw.github.com/vincechan/CPReader/master/screenshots/article.png" alt="Example" width="600">
