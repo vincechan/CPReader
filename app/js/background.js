@@ -129,6 +129,26 @@ var prismThemes =
     ]
 };
 
+layouts = 
+[
+  {
+    "name" : "sm",
+    "description" : "Fixed - Small"
+  },
+  {
+    "name" : "md",
+    "description" : "Fixed - Medimum"
+  },
+  {
+    "name" : "lg",
+    "description" : "Fixed - Large"
+  },
+  {
+    "name" : "fluid",
+    "description" : "Fluid"
+  }
+];
+
 /**
  * shared variables
  */
@@ -159,6 +179,30 @@ function getUserBootswatchThemeName() {
 }
 
 /**
+ * get user's preferred layout
+ */
+function getUserLayout() {
+  var layoutName = getUserLayoutName();
+  for (var i=0; i < layouts.length; i++){
+    if (layout[i].name == layoutName) {
+      return layouts[i];
+    }
+  }
+  console.log("no user layout is found");
+}
+
+/**
+ * get the name of user's preferred layout
+ */
+function getUserLayoutName() {
+  var name = localStorage["UserLayoutName"];
+  if (name == undefined) {
+    name = "md";
+  }
+  return name;
+}
+
+/**
  * get user's preferred prism theme
  */
 function getUserPrismThemeName() {
@@ -185,9 +229,10 @@ function getUserPrismTheme() {
 /**
  * save user's preferred themes to local storage.
  */
-function saveUserThemes(bootswatchThemeName, prismThemeName) {
+function saveUserPreference(bootswatchThemeName, prismThemeName, layoutName) {
   localStorage["UserBootstrapThemeName"] = bootswatchThemeName;
-  localStorage["UserPrismThemeName"] = prismThemeName;  
+  localStorage["UserPrismThemeName"] = prismThemeName;
+  localStorage["UserLayoutName"] = layoutName;  
 }
 
 // When the extension is installed or upgraded ...

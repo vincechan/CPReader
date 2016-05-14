@@ -49,9 +49,25 @@ function applyPrismjsTheme() {
     $('head').append('<link href="' + source + '" rel="stylesheet" type="text/css" />');    
 }
 
+function applyLayout() {
+    var layout = chrome.extension.getBackgroundPage().getUserLayoutName();
+    
+    // remove existing classes
+     $("#article-container").removeClass("container sm md lg");
+     
+     // add layout class
+    if (layout == "fluid") {
+        $("#article-container").addClass("container-fluid");
+    }
+    else {
+        $("#article-container").addClass("container").addClass(layout);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     applyBootstrapTheme();
     applyPrismjsTheme();
+    applyLayout();
     
     $("#loading-container").show();
     

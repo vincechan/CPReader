@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     createBootswatchSelect();
     createPrismSelect();
+    createLayoutSelect();
+    
     document.getElementById("read-button").addEventListener("click", function(){
         chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
             chrome.extension.getBackgroundPage().articleUrl = tabs[0].url;
@@ -9,8 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
             var bootswatchThemeName = bootswatchSelectList.options[bootswatchSelectList.selectedIndex].value;
             var prismSelectList = document.getElementById("prism-theme-select");
             var prismThemeName = prismSelectList.options[prismSelectList.selectedIndex].value;
-            chrome.extension.getBackgroundPage().saveUserThemes(
-                bootswatchThemeName, prismThemeName
+            var layoutSelectList = document.getElementById("layout-select");
+            var layoutName = layoutSelectList.options[layoutSelectList.selectedIndex].value;
+            chrome.extension.getBackgroundPage().saveUserPreference(
+                bootswatchThemeName, prismThemeName, layoutName
             );
             
             // show the article page in a new tab
@@ -41,6 +45,30 @@ function createBootswatchSelect() {
             option.selected = true;
         }
         selectList.appendChild(option);        
+    }
+}
+
+function createLayoutSelect() {
+    var layouts = chrome.extension.getBackgroundPage().layouts;
+    var userLayoutName = chrome.extension.getBackgroundPage().getUserLayoutName();
+    var container = document.getElementById("layout-container");
+    
+    //Create and append select list
+    var selectList = document.createElement("select");
+    selectList.id = "layout-select";
+    selectList.className = "form-control";
+    container.appendChild(selectList);
+    
+     //Create and append the options
+    for (var i = 0; i < layouts.length; i++) {
+        var layout = layouts[i];
+        var option = document.createElement("option");
+        option.value = layout.name;
+        option.text = layout.description;
+        if (layout.name == userLayoutName) {
+            option.selected = true;
+        }        
+        selectList.appendChild(option);
     }
 }
 
